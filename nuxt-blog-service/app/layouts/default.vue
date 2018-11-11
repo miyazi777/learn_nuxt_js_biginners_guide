@@ -1,8 +1,21 @@
 <template>
   <div>
-    <nuxt/>
+    <TheHeader />
+    <div class="container">
+      <nuxt class="container"/>
+    </div>
   </div>
 </template>
+
+<script>
+import TheHeader from '~/components/TheHeader.vue'
+
+export default {
+  components: {
+    TheHeader
+  }
+}
+</script>
 
 <style>
 html {
