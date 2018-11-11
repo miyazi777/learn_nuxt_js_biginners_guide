@@ -1,5 +1,5 @@
 <template>
-  <scection class="container posts-page">
+  <section class="container posts-page">
     <el-card>
       <div slot="header" class="clearfix">
         <span>新着投稿</span>
@@ -10,7 +10,7 @@
         <el-table-column prop="created_at" label="投稿日時" width="240"></el-table-column>
       </el-table>
     </el-card>
-  </scection>
+  </section>
 </template>
 
 <script>
