@@ -7,6 +7,16 @@
           <small>by {{post.user.id}}</small>
         </div>
         <p>{{post.body}}</p>
+        <p class="text-right">
+          <el-button :disable="!isLoggedIn" type="warning" v-if="isLiked" @click="unlike" round>
+            <span class="el-icon-star-on"></span>
+            <span>{{post.likes.length}}</span>
+          </el-button>
+          <el-button :disable="!isLoggedIn" type="warning" v-else @click="like" rount>
+            <span class="el-icon-star-off"></span>
+            <span>{{post.likes.length}}</span>
+          </el-button>
+        </p>
         <p class="text-right">{{post.created_at | time}}</p>
       </el-card>
       <p>
@@ -19,6 +29,7 @@
 <script>
 import moment from '~/plugins/moment'
 import { mapGetters, mapActions } from 'vuex'
+import cloneDeep from 'lodash.clonedeep'
 
 export default {
   async asyncData({ store, route, error }) {
@@ -39,7 +50,27 @@ export default {
     post() {
       return this.posts.find(p => p.id === this.$route.params.id)
     },
+    isLiked() {
+      if (!this.user) return false
+      return this.post.likes.find(l => l.user_id === this.user.id)
+    },
+    ...mapGetters(['user', 'isLoggedIn']),
     ...mapGetters('posts', ['posts'])
+  },
+  methods: {
+    like() {
+      if (!this.isLoggedIn) {
+        return
+      }
+      const likePayload = { user: this.user, post: this.post }
+      this.addLikeToPost(cloneDeep(likePayload))
+      this.addLikeLogToUser(cloneDeep(likePayload))
+    },
+    unlike() {
+      console.log('none')
+    },
+    ...mapActions(['addLikeLogToUser']),
+    ...mapActions('posts', ['addLikeToPost'])
   },
   filters: {
     time(val) {
