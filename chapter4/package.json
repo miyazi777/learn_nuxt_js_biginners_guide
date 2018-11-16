@@ -1,0 +1,24 @@
+{
+  "name": "chapter4",
+  "version": "1.0.0",
+  "description": "My astonishing Nuxt.js project",
+  "author": "miyazi777",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "test": "jest"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.25",
+    "jest": "^23.6.0",
+    "lodash.clonedeep": "^4.5.0",
+    "nodemon": "^1.11.0"
+  }
+}
