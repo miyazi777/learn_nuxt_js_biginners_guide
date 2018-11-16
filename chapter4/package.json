@@ -16,9 +16,27 @@
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.6",
     "@vue/test-utils": "^1.0.0-beta.25",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^23.6.0",
+    "babel-preset-vue-app": "^2.0.0",
     "jest": "^23.6.0",
     "lodash.clonedeep": "^4.5.0",
     "nodemon": "^1.11.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          "@babel/preset-env"
+        ]
+      }
+    }
   }
 }
